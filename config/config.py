@@ -59,5 +59,10 @@ IMAGE_MODEL_PRETRAINED = os.getenv("IMAGE_MODEL_PRETRAINED", "laion2b_s34b_b79k"
 BATCH_SIZE = int(os.getenv("BATCH_SIZE", "32"))
 IMAGE_SIZE = int(os.getenv("IMAGE_SIZE", "224"))  # for OpenCLIP
 
+# Retrieval configuration
+RETRIEVAL_TOP_K = int(os.getenv("RETRIEVAL_TOP_K", "10"))
+IMAGE_WEIGHT = float(os.getenv("IMAGE_WEIGHT", "0.7"))
+KNOWLEDGE_WEIGHT = float(os.getenv("KNOWLEDGE_WEIGHT", "0.3"))
+
 # Future: index configuration (e.g., FAISS index type)
 INDEX_TYPE = os.getenv("INDEX_TYPE", "FlatL2")  # example for FAISS
