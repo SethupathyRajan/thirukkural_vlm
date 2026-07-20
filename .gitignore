@@ -1,4 +1,7 @@
 .claude
 /venv
 plan.txt
+/embeddings
+/logs
+/indexes
 
