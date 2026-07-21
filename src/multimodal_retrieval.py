@@ -5,6 +5,7 @@ This script implements a retrieval engine that combines image similarity and sem
 
 import sys
 import time
+import logging
 import numpy as np
 import torch
 from pathlib import Path
@@ -30,9 +31,6 @@ import json
 # Set up logging
 setup_logging()
 logger = get_logger(__name__)
-
-# Global variable for the image model (to avoid reloading)
-_model = None
 
 def load_embeddings() -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """Load precomputed embeddings and IDs.
@@ -333,6 +331,18 @@ def retrieve_top_k(
         IMAGE_WEIGHT,
         KNOWLEDGE_WEIGHT
     )
+
+    # Log details for each candidate (debug level)
+    logger.debug("Candidate details after score combination:")
+    for i, cid in enumerate(top_k_ids):
+        logger.debug(
+            f"  Candidate {cid}: "
+            f"Image Sim: {top_k_scores[i]:.4f}, "
+            f"Knowledge Sim: {know_sims[i]:.4f}, "
+            f"Image Weight: {IMAGE_WEIGHT}, "
+            f"Knowledge Weight: {KNOWLEDGE_WEIGHT}, "
+            f"Combined: {combined_scores[i]:.4f}"
+        )
 
     # Rerank candidates
     reranked = rerank_candidates(

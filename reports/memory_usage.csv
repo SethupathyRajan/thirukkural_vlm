@@ -1,0 +1,2 @@
+Image Embeddings (bytes),Image IDs (approx. bytes),Knowledge Embeddings (bytes),Knowledge IDs (approx. bytes),Knowledge Objects (approx. bytes),Number of Images,Number of Knowledge Objects,Embedding Dimension
+581632,15164,434688,15111,133832,284,283,512

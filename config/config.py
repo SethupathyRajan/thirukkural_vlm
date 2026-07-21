@@ -64,5 +64,8 @@ RETRIEVAL_TOP_K = int(os.getenv("RETRIEVAL_TOP_K", "10"))
 IMAGE_WEIGHT = float(os.getenv("IMAGE_WEIGHT", "0.7"))
 KNOWLEDGE_WEIGHT = float(os.getenv("KNOWLEDGE_WEIGHT", "0.3"))
 
+# Logging configuration
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+
 # Future: index configuration (e.g., FAISS index type)
 INDEX_TYPE = os.getenv("INDEX_TYPE", "FlatL2")  # example for FAISS
