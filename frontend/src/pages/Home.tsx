@@ -1,0 +1,207 @@
+import React, { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '@/services/api';
+import { Card } from '@/components/ui/card';
+import ImageUploader from '@/components/upload/ImageUploader';
+import Button from '@/components/ui/button';
+
+const Home: React.FC = () => {
+  const [file, setFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [imageDimensions, setImageDimensions] = useState<{ width: number; height: number } | null>(null);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleFileChange = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (!selectedFile) {
+      setFile(null);
+      setPreviewUrl(null);
+      setImageDimensions(null);
+      setUploadError(null);
+      return;
+    }
+
+    // Validate file type
+    const validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+    if (!validTypes.includes(selectedFile.type)) {
+      setUploadError('Unsupported file type. Please upload a PNG, JPG, or JPEG image.');
+      setFile(null);
+      setPreviewUrl(null);
+      setImageDimensions(null);
+      return;
+    }
+
+    // Validate file size (5MB)
+    const maxSizeInBytes = 5 * 1024 * 1024;
+    if (selectedFile.size > maxSizeInBytes) {
+      setUploadError('File size too large. Please upload an image smaller than 5MB.');
+      setFile(null);
+      setPreviewUrl(null);
+      setImageDimensions(null);
+      return;
+    }
+
+    setFile(selectedFile);
+    setUploadError(null);
+
+    // Create preview URL
+    const preview = URL.createObjectURL(selectedFile);
+    setPreviewUrl(preview);
+
+    // Get image dimensions
+    try {
+      const img = new Image();
+      img.src = preview;
+      const dimensions = await new Promise<{ width: number; height: number }>((resolve, reject) => {
+        img.onload = () => resolve({ width: img.width, height: img.height });
+        img.onerror = reject;
+      });
+      setImageDimensions(dimensions);
+    } catch (err) {
+      console.error('Failed to load image for dimensions:', err);
+      setImageDimensions(null);
+    }
+  }, []);
+
+  const handleFileRemoved = useCallback(() => {
+    setFile(null);
+    setPreviewUrl(null);
+    setImageDimensions(null);
+    setUploadError(null);
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+    }
+  }, [previewUrl]);
+
+  const handleUpload = useCallback(async () => {
+    if (!file) return;
+    setUploadError(null);
+    setIsUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+      const response = await api.post('/predict', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      // Navigate to results with image and prediction data
+      navigate('/results', {
+        state: {
+          image: {
+            preview: previewUrl as string,
+            name: file.name,
+            width: imageDimensions?.width,
+            height: imageDimensions?.height,
+          },
+          prediction: response.data,
+        }
+      });
+    } catch (error: any) {
+      console.error('Upload error:', error);
+
+      // Provide more specific error messages based on error type
+      if (error?.code === 'ECONNABORTED') {
+        setUploadError('Request timed out. Please try again with a smaller image or check your connection.');
+      } else if (!navigator.onLine) {
+        setUploadError('No internet connection. Please check your connection and try again.');
+      } else if (error.response?.status === 413) {
+        setUploadError('File too large. Please upload an image smaller than 5MB.');
+      } else if (error.response?.status === 415) {
+        setUploadError('Unsupported file format. Please upload a PNG, JPG, or JPEG image.');
+      } else if (error.response?.status >= 500) {
+        setUploadError('Server error. Please try again later.');
+      } else {
+        setUploadError('Unable to analyze the image. Please try again with a different image.');
+      }
+    } finally {
+      setIsUploading(false);
+    }
+  }, [file, navigate, previewUrl, imageDimensions]);
+
+  return (
+    <div className="min-h-screen bg-white">
+      <header className="bg-white border-b pb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold text-gray-900">
+            Thirukkural Educational AI
+          </h1>
+          <p className="mt-2 text-lg text-gray-600">
+            Upload an image to find the most relevant Thirukkural.
+          </p>
+        </div>
+      </header>
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        {uploadError && (
+          <div className="mb-4 p-4 bg-red-50 text-red-600 rounded mb-6">
+            <div className="flex items-start">
+              <div className="flex-shrink-0">
+                {/* Error icon */}
+                <svg className="h-5 w-5 text-red-600 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm font-medium">{uploadError}</p>
+                {/* Add actionable buttons for error recovery */}
+                <div className="mt-2 flex space-x-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleUpload}
+                    disabled={isUploading || !file}
+                  >
+                    Try Again
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={handleFileRemoved}
+                  >
+                    Choose Another Image
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        <div className="space-y-6">
+          <Card className="mb-6">
+            <div className="p-6">
+              <ImageUploader
+                onFileChange={handleFileChange}
+                onFileRemoved={handleFileRemoved}
+                isUploading={isUploading}
+                uploadError={uploadError}
+              />
+            </div>
+          </Card>
+          <div className="flex justify-center">
+            <Button
+              variant="primary"
+              onClick={handleUpload}
+              isLoading={isUploading}
+              disabled={isUploading || !file}
+              className="w-full md:w-48"
+            >
+              {isUploading ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                  </svg>
+                  Analyzing...
+                </>
+              ) : 'Analyze Image'}
+            </Button>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default Home;
