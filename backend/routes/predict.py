@@ -5,6 +5,8 @@ import sys
 from pathlib import Path
 import logging
 
+# Add project root to path
+sys.path.append(str(Path(__file__).parent.parent.parent))
 # Add src to path
 sys.path.append(str(Path(__file__).parent.parent.parent / "src"))
 sys.path.append(str(Path(__file__).parent.parent / "services"))
@@ -17,6 +19,8 @@ from schemas.response import PredictionResponse, MatchResult as ResponseMatchRes
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
+# Initialize AI service (singleton)
+ai_service = AIService()
 # Initialize AI service (singleton)
 ai_service = AIService()
 

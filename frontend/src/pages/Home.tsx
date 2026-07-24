@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '@/services/api';
+import api from "@/services/api";
 import { Card } from '@/components/ui/card';
 import ImageUploader from '@/components/upload/ImageUploader';
 import Button from '@/components/ui/button';

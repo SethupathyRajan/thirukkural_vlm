@@ -61,7 +61,7 @@ api.interceptors.response.use(
         message: error.message,
         code: error.code,
         status: error.response?.status,
-        data: response?.data
+        data: error.response?.data
       });
     }
 
@@ -170,7 +170,7 @@ export const apiWithCancel = {
 
     // Clean up after completion
     promise.finally(() => {
-      pendingUrls.delete(key);
+      pendingRequests.delete(key);
     });
 
     return promise;
@@ -187,4 +187,3 @@ export const apiWithCancel = {
 
 // Export both the regular API and the enhanced version
 export default api;
-export { apiWithCancel };

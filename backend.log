@@ -1,0 +1,61 @@
+2026-07-24 01:00:40 - root - INFO - Logging configured successfully.
+2026-07-24 01:00:40 - root - INFO - Logging configured successfully.
+/home/sethupathy/.local/lib/python3.13/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [349930]
+INFO:     Waiting for application startup.
+2026-07-24 01:00:41 - inference - INFO - Loading inference engine...
+2026-07-24 01:00:41 - inference - INFO - Loading image model...
+2026-07-24 01:00:44 - src.model_manager - INFO - Loading image model: ViT-B-32 with pretrained laion2b_s34b_b79k
+2026-07-24 01:00:44 - root - INFO - Parsing model identifier. Schema: None, Identifier: ViT-B-32
+2026-07-24 01:00:44 - root - INFO - Loaded built-in ViT-B-32 model config.
+2026-07-24 01:00:45 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/laion/CLIP-ViT-B-32-laion2B-s34B-b79K/resolve/main/open_clip_model.safetensors "HTTP/1.1 302 Found"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-24 01:00:45 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-24 01:00:45 - root - INFO - Instantiating model architecture: CLIP
+2026-07-24 01:00:46 - root - INFO - Loading full pretrained weights from: /home/sethupathy/.cache/huggingface/hub/models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K/snapshots/1a25a446712ba5ee05982a381eed697ef9b435cf/open_clip_model.safetensors
+2026-07-24 01:00:47 - root - INFO - Final image preprocessing configuration set: {'size': (224, 224), 'mode': 'RGB', 'mean': (0.48145466, 0.4578275, 0.40821073), 'std': (0.26862954, 0.26130258, 0.27577711), 'interpolation': 'bicubic', 'resize_mode': 'shortest', 'fill_color': 0}
+2026-07-24 01:00:47 - root - INFO - Model ViT-B-32 creation process complete.
+2026-07-24 01:00:47 - src.model_manager - INFO - Image model loaded successfully.
+2026-07-24 01:00:47 - inference - INFO - Image model loaded successfully.
+2026-07-24 01:00:47 - inference - INFO - Loading embeddings...
+2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading image embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/image_embeddings.npy...
+2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading knowledge embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/knowledge_embeddings.npy...
+2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loaded 284 image embeddings and 283 knowledge embeddings.
+2026-07-24 01:00:47 - inference - INFO - Embeddings loaded successfully.
+2026-07-24 01:00:47 - inference - INFO - Loading knowledge objects...
+2026-07-24 01:00:47 - inference - INFO - Loaded 283 knowledge objects.
+2026-07-24 01:00:47 - inference - INFO - Inference engine ready. Initialization took 5.96 seconds.
+2026-07-24 01:00:47 - routes.predict - INFO - AI service initialized successfully
+2026-07-24 01:00:47 - inference - INFO - Loading inference engine...
+2026-07-24 01:00:47 - inference - INFO - Loading image model...
+2026-07-24 01:00:47 - inference - INFO - Image model loaded successfully.
+2026-07-24 01:00:47 - inference - INFO - Loading embeddings...
+2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading image embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/image_embeddings.npy...
+2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading knowledge embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/knowledge_embeddings.npy...
+2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loaded 284 image embeddings and 283 knowledge embeddings.
+2026-07-24 01:00:47 - inference - INFO - Embeddings loaded successfully.
+2026-07-24 01:00:47 - inference - INFO - Loading knowledge objects...
+2026-07-24 01:00:47 - inference - INFO - Loaded 283 knowledge objects.
+2026-07-24 01:00:47 - inference - INFO - Inference engine ready. Initialization took 0.01 seconds.
+2026-07-24 01:00:47 - routes.explain - INFO - AI service initialized successfully
+2026-07-24 01:00:47 - inference - INFO - Loading inference engine...
+2026-07-24 01:00:47 - inference - INFO - Loading image model...
+2026-07-24 01:00:47 - inference - INFO - Image model loaded successfully.
+2026-07-24 01:00:47 - inference - INFO - Loading embeddings...
+2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading image embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/image_embeddings.npy...
+2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading knowledge embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/knowledge_embeddings.npy...
+2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loaded 284 image embeddings and 283 knowledge embeddings.
+2026-07-24 01:00:47 - inference - INFO - Embeddings loaded successfully.
+2026-07-24 01:00:47 - inference - INFO - Loading knowledge objects...
+2026-07-24 01:00:47 - inference - INFO - Loaded 283 knowledge objects.
+2026-07-24 01:00:47 - inference - INFO - Inference engine ready. Initialization took 0.00 seconds.
+2026-07-24 01:00:47 - routes.chat - INFO - AI service initialized successfully
+2026-07-24 01:00:47 - routes.predict - INFO - AI service initialized successfully
+2026-07-24 01:00:47 - routes.explain - INFO - AI service initialized successfully
+2026-07-24 01:00:47 - routes.chat - INFO - AI service initialized successfully
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-07-24 06:38:46 - middleware.logging - INFO - GET /health Status: 200 Duration: 0.012s
+INFO:     127.0.0.1:45796 - "GET /health HTTP/1.1" 200 OK
