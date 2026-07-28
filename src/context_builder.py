@@ -53,9 +53,8 @@ class ContextBuilder:
 
         # Ethical reasoning from Thirukkural
         context_parts.append("ETHICAL REASONING (THIRUKKURAL):")
-        context_parts.append(f"  Thirukkural: {explanation.matched_kural}")
+        context_parts.append(f"  Thirukkural {explanation.matched_kural}: {explanation.ethical_reasoning}")
         context_parts.append(f"  Concept: {explanation.matched_concept}")
-        context_parts.append(f"  Explanation: {explanation.ethical_reasoning}")
         context_parts.append("")
 
         # Confidence and retrieval evidence
@@ -96,7 +95,7 @@ class ContextBuilder:
 
     def build_short_context(self, prediction: Prediction, explanation: Explanation) -> str:
         """
-        Build a shorter context string for concise conversations.
+        Build a short context string for concise conversations.
 
         Args:
             prediction: Prediction object from inference engine

@@ -1,61 +1,115 @@
-2026-07-24 01:00:40 - root - INFO - Logging configured successfully.
-2026-07-24 01:00:40 - root - INFO - Logging configured successfully.
-/home/sethupathy/.local/lib/python3.13/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+2026-07-25 12:26:26 - root - INFO - Logging configured successfully.
+2026-07-25 12:26:26 - root - INFO - Logging configured successfully.
+/run/media/sethupathy/Movies/Thirukkural CV/venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
 * 'orm_mode' has been renamed to 'from_attributes'
   warnings.warn(message, UserWarning)
-INFO:     Started server process [349930]
+INFO:     Started server process [450843]
 INFO:     Waiting for application startup.
-2026-07-24 01:00:41 - inference - INFO - Loading inference engine...
-2026-07-24 01:00:41 - inference - INFO - Loading image model...
-2026-07-24 01:00:44 - src.model_manager - INFO - Loading image model: ViT-B-32 with pretrained laion2b_s34b_b79k
-2026-07-24 01:00:44 - root - INFO - Parsing model identifier. Schema: None, Identifier: ViT-B-32
-2026-07-24 01:00:44 - root - INFO - Loaded built-in ViT-B-32 model config.
-2026-07-24 01:00:45 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/laion/CLIP-ViT-B-32-laion2B-s34B-b79K/resolve/main/open_clip_model.safetensors "HTTP/1.1 302 Found"
+2026-07-25 12:26:27 - inference - INFO - Loading inference engine...
+2026-07-25 12:26:27 - inference - INFO - Loading image model...
+2026-07-25 12:26:30 - src.model_manager - INFO - Loading image model: ViT-B-32 with pretrained laion2b_s34b_b79k
+2026-07-25 12:26:30 - root - INFO - Parsing model identifier. Schema: None, Identifier: ViT-B-32
+2026-07-25 12:26:30 - root - INFO - Loaded built-in ViT-B-32 model config.
+2026-07-25 12:26:31 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/laion/CLIP-ViT-B-32-laion2B-s34B-b79K/resolve/main/open_clip_model.safetensors "HTTP/1.1 302 Found"
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-2026-07-24 01:00:45 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-2026-07-24 01:00:45 - root - INFO - Instantiating model architecture: CLIP
-2026-07-24 01:00:46 - root - INFO - Loading full pretrained weights from: /home/sethupathy/.cache/huggingface/hub/models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K/snapshots/1a25a446712ba5ee05982a381eed697ef9b435cf/open_clip_model.safetensors
-2026-07-24 01:00:47 - root - INFO - Final image preprocessing configuration set: {'size': (224, 224), 'mode': 'RGB', 'mean': (0.48145466, 0.4578275, 0.40821073), 'std': (0.26862954, 0.26130258, 0.27577711), 'interpolation': 'bicubic', 'resize_mode': 'shortest', 'fill_color': 0}
-2026-07-24 01:00:47 - root - INFO - Model ViT-B-32 creation process complete.
-2026-07-24 01:00:47 - src.model_manager - INFO - Image model loaded successfully.
-2026-07-24 01:00:47 - inference - INFO - Image model loaded successfully.
-2026-07-24 01:00:47 - inference - INFO - Loading embeddings...
-2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading image embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/image_embeddings.npy...
-2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading knowledge embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/knowledge_embeddings.npy...
-2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loaded 284 image embeddings and 283 knowledge embeddings.
-2026-07-24 01:00:47 - inference - INFO - Embeddings loaded successfully.
-2026-07-24 01:00:47 - inference - INFO - Loading knowledge objects...
-2026-07-24 01:00:47 - inference - INFO - Loaded 283 knowledge objects.
-2026-07-24 01:00:47 - inference - INFO - Inference engine ready. Initialization took 5.96 seconds.
-2026-07-24 01:00:47 - routes.predict - INFO - AI service initialized successfully
-2026-07-24 01:00:47 - inference - INFO - Loading inference engine...
-2026-07-24 01:00:47 - inference - INFO - Loading image model...
-2026-07-24 01:00:47 - inference - INFO - Image model loaded successfully.
-2026-07-24 01:00:47 - inference - INFO - Loading embeddings...
-2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading image embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/image_embeddings.npy...
-2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading knowledge embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/knowledge_embeddings.npy...
-2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loaded 284 image embeddings and 283 knowledge embeddings.
-2026-07-24 01:00:47 - inference - INFO - Embeddings loaded successfully.
-2026-07-24 01:00:47 - inference - INFO - Loading knowledge objects...
-2026-07-24 01:00:47 - inference - INFO - Loaded 283 knowledge objects.
-2026-07-24 01:00:47 - inference - INFO - Inference engine ready. Initialization took 0.01 seconds.
-2026-07-24 01:00:47 - routes.explain - INFO - AI service initialized successfully
-2026-07-24 01:00:47 - inference - INFO - Loading inference engine...
-2026-07-24 01:00:47 - inference - INFO - Loading image model...
-2026-07-24 01:00:47 - inference - INFO - Image model loaded successfully.
-2026-07-24 01:00:47 - inference - INFO - Loading embeddings...
-2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading image embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/image_embeddings.npy...
-2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loading knowledge embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/knowledge_embeddings.npy...
-2026-07-24 01:00:47 - src.multimodal_retrieval - INFO - Loaded 284 image embeddings and 283 knowledge embeddings.
-2026-07-24 01:00:47 - inference - INFO - Embeddings loaded successfully.
-2026-07-24 01:00:47 - inference - INFO - Loading knowledge objects...
-2026-07-24 01:00:47 - inference - INFO - Loaded 283 knowledge objects.
-2026-07-24 01:00:47 - inference - INFO - Inference engine ready. Initialization took 0.00 seconds.
-2026-07-24 01:00:47 - routes.chat - INFO - AI service initialized successfully
-2026-07-24 01:00:47 - routes.predict - INFO - AI service initialized successfully
-2026-07-24 01:00:47 - routes.explain - INFO - AI service initialized successfully
-2026-07-24 01:00:47 - routes.chat - INFO - AI service initialized successfully
+2026-07-25 12:26:31 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-25 12:26:31 - root - INFO - Instantiating model architecture: CLIP
+2026-07-25 12:26:32 - root - INFO - Loading full pretrained weights from: /home/sethupathy/.cache/huggingface/hub/models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K/snapshots/1a25a446712ba5ee05982a381eed697ef9b435cf/open_clip_model.safetensors
+2026-07-25 12:26:32 - root - INFO - Final image preprocessing configuration set: {'size': (224, 224), 'mode': 'RGB', 'mean': (0.48145466, 0.4578275, 0.40821073), 'std': (0.26862954, 0.26130258, 0.27577711), 'interpolation': 'bicubic', 'resize_mode': 'shortest', 'fill_color': 0}
+2026-07-25 12:26:32 - root - INFO - Model ViT-B-32 creation process complete.
+2026-07-25 12:26:32 - src.model_manager - INFO - Image model loaded successfully.
+2026-07-25 12:26:32 - inference - INFO - Image model loaded successfully.
+2026-07-25 12:26:32 - inference - INFO - Loading embeddings...
+2026-07-25 12:26:32 - src.multimodal_retrieval - INFO - Loading image embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/image_embeddings.npy...
+2026-07-25 12:26:32 - src.multimodal_retrieval - INFO - Loading knowledge embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/knowledge_embeddings.npy...
+2026-07-25 12:26:32 - src.multimodal_retrieval - INFO - Loaded 284 image embeddings and 283 knowledge embeddings.
+2026-07-25 12:26:32 - inference - INFO - Embeddings loaded successfully.
+2026-07-25 12:26:32 - inference - INFO - Loading knowledge objects...
+2026-07-25 12:26:32 - inference - INFO - Loaded 283 knowledge objects.
+2026-07-25 12:26:32 - inference - INFO - Inference engine ready. Initialization took 5.66 seconds.
+2026-07-25 12:26:32 - routes.predict - INFO - AI service initialized successfully
+2026-07-25 12:26:32 - inference - INFO - Loading inference engine...
+2026-07-25 12:26:32 - inference - INFO - Loading image model...
+2026-07-25 12:26:32 - inference - INFO - Image model loaded successfully.
+2026-07-25 12:26:32 - inference - INFO - Loading embeddings...
+2026-07-25 12:26:32 - src.multimodal_retrieval - INFO - Loading image embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/image_embeddings.npy...
+2026-07-25 12:26:32 - src.multimodal_retrieval - INFO - Loading knowledge embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/knowledge_embeddings.npy...
+2026-07-25 12:26:32 - src.multimodal_retrieval - INFO - Loaded 284 image embeddings and 283 knowledge embeddings.
+2026-07-25 12:26:32 - inference - INFO - Embeddings loaded successfully.
+2026-07-25 12:26:32 - inference - INFO - Loading knowledge objects...
+2026-07-25 12:26:32 - inference - INFO - Loaded 283 knowledge objects.
+2026-07-25 12:26:32 - inference - INFO - Inference engine ready. Initialization took 0.00 seconds.
+2026-07-25 12:26:32 - routes.explain - INFO - AI service initialized successfully
+2026-07-25 12:26:32 - inference - INFO - Loading inference engine...
+2026-07-25 12:26:32 - inference - INFO - Loading image model...
+2026-07-25 12:26:32 - inference - INFO - Image model loaded successfully.
+2026-07-25 12:26:32 - inference - INFO - Loading embeddings...
+2026-07-25 12:26:32 - src.multimodal_retrieval - INFO - Loading image embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/image_embeddings.npy...
+2026-07-25 12:26:32 - src.multimodal_retrieval - INFO - Loading knowledge embeddings from /run/media/sethupathy/Movies/Thirukkural CV/embeddings/knowledge_embeddings.npy...
+2026-07-25 12:26:32 - src.multimodal_retrieval - INFO - Loaded 284 image embeddings and 283 knowledge embeddings.
+2026-07-25 12:26:32 - inference - INFO - Embeddings loaded successfully.
+2026-07-25 12:26:32 - inference - INFO - Loading knowledge objects...
+2026-07-25 12:26:32 - inference - INFO - Loaded 283 knowledge objects.
+2026-07-25 12:26:32 - inference - INFO - Inference engine ready. Initialization took 0.00 seconds.
+2026-07-25 12:26:32 - routes.chat - INFO - AI service initialized successfully
+2026-07-25 12:26:32 - routes.predict - INFO - AI service initialized successfully
+2026-07-25 12:26:32 - routes.explain - INFO - AI service initialized successfully
+2026-07-25 12:26:32 - routes.chat - INFO - AI service initialized successfully
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-2026-07-24 06:38:46 - middleware.logging - INFO - GET /health Status: 200 Duration: 0.012s
-INFO:     127.0.0.1:45796 - "GET /health HTTP/1.1" 200 OK
+2026-07-25 12:26:47 - src.multimodal_retrieval - INFO - Encoding query image: /tmp/temp_image_51921cad07567b9e
+2026-07-25 12:26:47 - src.image_encoder - INFO - Image model loaded successfully.
+2026-07-25 12:26:47 - src.multimodal_retrieval - INFO - Computing image similarity...
+2026-07-25 12:26:47 - src.multimodal_retrieval - INFO - Getting top-10 candidates by image similarity...
+2026-07-25 12:26:47 - src.multimodal_retrieval - INFO - Retrieval completed in 0.13 seconds.
+2026-07-25 12:26:47 - inference - INFO - Prediction completed in 0.143 seconds.
+2026-07-25 12:26:47 - middleware.logging - INFO - POST /chat/ Status: 200 Duration: 0.151s
+INFO:     127.0.0.1:56772 - "POST /chat/ HTTP/1.1" 200 OK
+2026-07-25 12:27:16 - src.multimodal_retrieval - INFO - Encoding query image: /tmp/temp_image_8b30fd2b38957a1e
+2026-07-25 12:27:16 - src.image_encoder - INFO - Image model loaded successfully.
+2026-07-25 12:27:16 - src.multimodal_retrieval - INFO - Computing image similarity...
+2026-07-25 12:27:16 - src.multimodal_retrieval - INFO - Getting top-10 candidates by image similarity...
+2026-07-25 12:27:16 - src.multimodal_retrieval - INFO - Retrieval completed in 0.12 seconds.
+2026-07-25 12:27:16 - inference - INFO - Prediction completed in 0.130 seconds.
+2026-07-25 12:27:16 - middleware.logging - INFO - POST /chat/ Status: 200 Duration: 0.134s
+INFO:     127.0.0.1:34460 - "POST /chat/ HTTP/1.1" 200 OK
+2026-07-25 12:29:37 - src.multimodal_retrieval - INFO - Encoding query image: /tmp/temp_image_70fb928a3730e59a
+2026-07-25 12:29:37 - src.image_encoder - INFO - Image model loaded successfully.
+2026-07-25 12:29:38 - src.multimodal_retrieval - INFO - Computing image similarity...
+2026-07-25 12:29:38 - src.multimodal_retrieval - INFO - Getting top-10 candidates by image similarity...
+2026-07-25 12:29:38 - src.multimodal_retrieval - INFO - Retrieval completed in 0.20 seconds.
+2026-07-25 12:29:38 - inference - INFO - Prediction completed in 0.207 seconds.
+2026-07-25 12:29:38 - middleware.logging - INFO - POST /chat/ Status: 200 Duration: 0.209s
+INFO:     127.0.0.1:40022 - "POST /chat/ HTTP/1.1" 200 OK
+2026-07-25 12:30:54 - src.multimodal_retrieval - INFO - Encoding query image: /tmp/temp_image_9b06579456c4199d
+2026-07-25 12:30:54 - src.image_encoder - INFO - Image model loaded successfully.
+2026-07-25 12:30:54 - src.multimodal_retrieval - INFO - Computing image similarity...
+2026-07-25 12:30:54 - src.multimodal_retrieval - INFO - Getting top-10 candidates by image similarity...
+2026-07-25 12:30:54 - src.multimodal_retrieval - INFO - Retrieval completed in 0.17 seconds.
+2026-07-25 12:30:54 - inference - INFO - Prediction completed in 0.177 seconds.
+2026-07-25 12:30:54 - middleware.logging - INFO - POST /chat/ Status: 200 Duration: 0.180s
+INFO:     127.0.0.1:46622 - "POST /chat/ HTTP/1.1" 200 OK
+2026-07-25 12:39:18 - src.multimodal_retrieval - INFO - Encoding query image: /tmp/temp_image_bd01a48fcfe0eae2
+2026-07-25 12:39:18 - src.image_encoder - INFO - Image model loaded successfully.
+2026-07-25 12:39:18 - src.multimodal_retrieval - INFO - Computing image similarity...
+2026-07-25 12:39:18 - src.multimodal_retrieval - INFO - Getting top-10 candidates by image similarity...
+2026-07-25 12:39:18 - src.multimodal_retrieval - INFO - Retrieval completed in 0.22 seconds.
+2026-07-25 12:39:18 - inference - INFO - Prediction completed in 0.229 seconds.
+2026-07-25 12:39:18 - middleware.logging - INFO - POST /chat/ Status: 200 Duration: 0.233s
+INFO:     127.0.0.1:50078 - "POST /chat/ HTTP/1.1" 200 OK
+2026-07-25 12:42:32 - src.multimodal_retrieval - INFO - Encoding query image: /tmp/temp_image_032a6ec4e16f2737
+2026-07-25 12:42:32 - src.image_encoder - INFO - Image model loaded successfully.
+2026-07-25 12:42:32 - src.multimodal_retrieval - INFO - Computing image similarity...
+2026-07-25 12:42:32 - src.multimodal_retrieval - INFO - Getting top-10 candidates by image similarity...
+2026-07-25 12:42:32 - src.multimodal_retrieval - INFO - Retrieval completed in 0.21 seconds.
+2026-07-25 12:42:32 - inference - INFO - Prediction completed in 0.210 seconds.
+2026-07-25 12:42:32 - middleware.logging - INFO - POST /chat/ Status: 200 Duration: 0.212s
+INFO:     127.0.0.1:49528 - "POST /chat/ HTTP/1.1" 200 OK
+2026-07-25 12:44:39 - src.multimodal_retrieval - INFO - Encoding query image: /tmp/temp_image_73c5b456dc9c811f
+2026-07-25 12:44:39 - src.image_encoder - INFO - Image model loaded successfully.
+2026-07-25 12:44:39 - src.multimodal_retrieval - INFO - Computing image similarity...
+2026-07-25 12:44:39 - src.multimodal_retrieval - INFO - Getting top-10 candidates by image similarity...
+2026-07-25 12:44:39 - src.multimodal_retrieval - INFO - Retrieval completed in 0.20 seconds.
+2026-07-25 12:44:39 - inference - INFO - Prediction completed in 0.220 seconds.
+2026-07-25 12:44:39 - middleware.logging - INFO - POST /chat/ Status: 200 Duration: 0.231s
+INFO:     127.0.0.1:33924 - "POST /chat/ HTTP/1.1" 200 OK

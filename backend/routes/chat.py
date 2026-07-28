@@ -66,6 +66,8 @@ async def chat_with_image(request: ChatRequest):
 
         # Initialize conversation engine for this session
         conversation_engine = ConversationEngine()
+        # Initialize with prediction and explanation
+        conversation_engine.initialize(prediction, explanation)
         # Note: In a real app, we would pass a configured model (e.g., OpenAI, Ollama)
         # For now, we use the default (which uses a mock model)
 
@@ -75,11 +77,15 @@ async def chat_with_image(request: ChatRequest):
         # Get the answer to the question
         answer = conversation_engine.ask(request.question)
 
+        # Convert prediction and explanation to dicts for response validation
+        prediction_dict = prediction.to_dict()
+        explanation_dict = explanation.to_dict()
+
         # Return the response
         return ChatResponse(
             answer=answer,
-            prediction=prediction,
-            explanation=explanation
+            prediction=prediction_dict,
+            explanation=explanation_dict
         )
 
     except HTTPException:

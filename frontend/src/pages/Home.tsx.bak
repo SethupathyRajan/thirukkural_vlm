@@ -176,7 +176,6 @@ const Home: React.FC = () => {
                 onFileRemoved={handleFileRemoved}
                 isUploading={isUploading}
                 uploadError={uploadError}
-                onUpload={handleUpload}
               />
             </div>
           </Card>

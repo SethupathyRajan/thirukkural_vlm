@@ -7,6 +7,7 @@ Provides a base class for different LLM providers and example implementations.
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
+import re
 
 
 @dataclass
@@ -111,6 +112,9 @@ class MockConversationModel(BaseConversationModel):
             line_lower = line.lower().strip()
             if line_lower.startswith('explanation:'):
                 explanation_text = line.split(':', 1)[1].strip()
+                # Also treat this as ethical reasoning if not set elsewhere
+                if not ethical_reasoning:
+                    ethical_reasoning = explanation_text
             elif line_lower.startswith('scenario:'):
                 scenario_desc = line.split(':', 1)[1].strip()
             elif line_lower.startswith('question:'):
@@ -118,16 +122,19 @@ class MockConversationModel(BaseConversationModel):
             elif line_lower.startswith('correct answer:'):
                 correct_answer = line.split(':', 1)[1].strip()
             elif line_lower.startswith('thirukkural') and ':' in line:
-                # Format: "Thirukkural 42: Helping others is a core virtue."
+                # Format: "Thirukkural: 42" or "Thirukkural 42: explanation"
                 parts = line.split(':', 1)
-                if len(parts) == 2:
-                    kural_part = parts[0].strip()
-                    # Extract number from "Thirukkural 42"
-                    import re
-                    match = re.search(r'\d+', kural_part)
-                    if match:
-                        kural_num = match.group()
-                    ethical_reasoning = parts[1].strip()
+                left = parts[0].strip()
+                right = parts[1].strip() if len(parts) > 1 else ""
+                # Extract number from left side like "Thirukkural 42"
+                match = re.search(r'\d+', left)
+                if match:
+                    kural_num = match.group()
+                # If right side has content, treat it as ethical reasoning
+                if right and not ethical_reasoning:
+                    ethical_reasoning = right
+                # If we still don't have ethical_reasoning, maybe left side after number contains it?
+                # Not needed for current context format.
             elif line_lower.startswith('concept:'):
                 concept_text = line.split(':', 1)[1].strip()
 
@@ -177,7 +184,7 @@ class MockConversationModel(BaseConversationModel):
                 if concept_text and ethical_reasoning:
                     return f"At a collegiate level, this scenario illustrates the ethical principle of {concept_text} as outlined in Thirukkural {kural_num or 'the retrieved Kural'}. The Thirukkural explains: {ethical_reasoning}. This aligns with ethical frameworks that emphasize duty and virtue."
                 else:
-                    return f"At a collegiate level, this relates to the ethical teachings of Thirukkural {kural_num or 'the retrieved Kural'} which provides guidance on righteous conduct."
+                    return f"At a collegiate level, this relates to the ethical teachings of Thirukkural {kural_num or 'the retrieved Keral'} which provides guidance on righteous conduct."
 
         else:
             # Default response: provide relevant information from context
@@ -191,9 +198,6 @@ class MockConversationModel(BaseConversationModel):
     def is_available(self) -> bool:
         """Mock model is always available."""
         return self._available
-
-    # Note: _extract_scenario_from_context method is no longer needed as we integrated the logic
-    # into the main generate_response method above.
 
 
 # Example placeholder for OpenAI implementation (would require openai package)
